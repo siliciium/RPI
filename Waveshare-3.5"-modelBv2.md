@@ -45,7 +45,7 @@ display_rotate=1
 sudo nano /usr/share/X11/xorg.conf.d/99-fbdev.conf
 ```
 Section "Device"
-   Identifier "waveshare35b-v2"
+   Identifier "ADS7846 Touchscreen"
    Driver "fbdev"
    Option "fbdev" "/dev/fb1"
 EndSection
