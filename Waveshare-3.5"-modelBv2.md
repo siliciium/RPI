@@ -62,6 +62,29 @@ mv .Xauthority .Xauthority.backup
 sudo ./LCD35B-show-V2 90
 ```
 
+
+### CALIBRATION (FROM SSH ON ANOTHER DEVICE°
+```
+export DISPLAY=:0.0
+xinput_calibrator
+```
+
+sudo nano /usr/share/X11/xorg.conf.d/99-calibration.conf
+
+```
+Section "InputClass"
+        Identifier      "calibration"
+        MatchProduct    "ADS7846 Touchscreen"
+        Option  "MinX"  "3686"
+        Option  "MaxX"  "63486"
+        Option  "MinY"  "63384"
+        Option  "MaxY"  "3038"
+        Option  "SwapXY"        "1" # unless it was already set to 1
+EndSection
+```
+
+
+
 # Ref: 
 
 https://tejaswid.github.io/wikitm/rpi/pi-tft-display
