@@ -56,7 +56,7 @@ Clear your .Xauthority file
 mv .Xauthority .Xauthority.backup
 ```
 
-### OPTIONAL : ROTATE THE SCREEN IF NECESSARY (ABOVE CONFIG ALREADY USED THIS ROTATION)
+### OPTIONAL : ROTATE THE SCREEN IF NECESSARY
 ### WARNING : maybe cmdline.txt and/or config.txt will be overwrite !
 ```
 sudo ./LCD35B-show-V2 90
