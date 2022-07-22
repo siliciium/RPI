@@ -30,7 +30,7 @@ dtparam=spi=on
 enable_uart=1
 dtoverlay=dwc2
 dtparam=audio=on
-dtoverlay=waveshare35b-v2:rotate=90
+dtoverlay=waveshare35b-v2
 hdmi_force_hotplug=1
 hdmi_group=2
 hdmi_mode=1
