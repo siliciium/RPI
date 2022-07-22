@@ -30,14 +30,14 @@ dtparam=spi=on
 enable_uart=1
 dtoverlay=dwc2
 dtparam=audio=on
-dtoverlay=waveshare35b-v2
+dtoverlay=waveshare35b-v2:rotate=90
 hdmi_force_hotplug=1
 hdmi_group=2
 hdmi_mode=1
 hdmi_mode=87
 hdmi_cvt 480 320 60 6 0 0 0
 hdmi_drive=2
-display_rotate=1
+display_rotate=3
 ```
 
 ### PLUG AGAIN THE DEVICE WITH USB-OTG AND CONNECT TO SSH THEN :
@@ -56,33 +56,42 @@ Clear your .Xauthority file
 mv .Xauthority .Xauthority.backup
 ```
 
-### OPTIONAL : ROTATE THE SCREEN IF NECESSARY
-### WARNING : maybe cmdline.txt and/or config.txt will be overwrite !
-```
-sudo ./LCD35B-show-V2 90
-```
-
-
-### CALIBRATION (FROM SSH ON ANOTHER DEVICE°
-```
-export DISPLAY=:0.0
-xinput_calibrator
-```
-
 sudo nano /usr/share/X11/xorg.conf.d/99-calibration.conf
 
 ```
 Section "InputClass"
         Identifier      "calibration"
         MatchProduct    "ADS7846 Touchscreen"
-        Option  "Calibration"   "300 3932 294 3801"
-        Option  "SwapAxes"      "0"
-        Option "EmulateThirdButton" "1"
-        Option "EmulateThirdButtonTimeout" "1000"
-        Option "EmulateThirdButtonMoveThreshold" "300"
+        Option  "MinX"  "1934"
+        Option  "MaxX"  "61280"
+        Option  "MinY"  "62309"
+        Option  "MaxY"  "3738"
+        Option  "SwapXY"        "1" # unless it was already set to 1
+        Option  "InvertX"       "0"  # unless it was already set
+        Option  "InvertY"       "0"  # unless it was already set
+        Option "TransformationMatrix" "0 -1 1 1 0 0 0 0 1"
 EndSection
 ```
 
+
+### RESTART X SERVER
+```
+sudo service lightdm stop
+sudo service lightdm start
+```
+
+### CALIBRATION
+```
+export DISPLAY=:0.0
+xinput_calibrator
+```
+
+
+### OPTIONAL : ROTATE THE SCREEN IF NECESSARY
+### WARNING : maybe cmdline.txt and/or config.txt will be overwrite !
+```
+sudo ./LCD35B-show-V2 90
+```
 
 
 # Ref: 
