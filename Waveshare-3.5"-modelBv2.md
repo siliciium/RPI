@@ -75,11 +75,11 @@ sudo nano /usr/share/X11/xorg.conf.d/99-calibration.conf
 Section "InputClass"
         Identifier      "calibration"
         MatchProduct    "ADS7846 Touchscreen"
-        Option  "MinX"  "3686"
-        Option  "MaxX"  "63486"
-        Option  "MinY"  "63384"
-        Option  "MaxY"  "3038"
-        Option  "SwapXY"        "1" # unless it was already set to 1
+        Option  "Calibration"   "300 3932 294 3801"
+        Option  "SwapAxes"      "0"
+        Option "EmulateThirdButton" "1"
+        Option "EmulateThirdButtonTimeout" "1000"
+        Option "EmulateThirdButtonMoveThreshold" "300"
 EndSection
 ```
 
