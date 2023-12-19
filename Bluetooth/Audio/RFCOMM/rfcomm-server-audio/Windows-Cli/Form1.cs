@@ -18,6 +18,7 @@ namespace RFCOMM_cli
     public partial class Form1 : Form
     {
         private static string password = "XXXXXXXXXXXXXXXXXXXXXXXXX";
+        private static string filter_device_name = "remote_bt_name";
 
         private static string device_name;
         private static bool connected = false;
@@ -197,7 +198,7 @@ namespace RFCOMM_cli
                     _AppendText(richTextBox1, $"\tHost Type              : {service.Device.HostName.Type}{System.Environment.NewLine}", Color.White);
 
 
-                    if (String.Equals(service.Device.Name, "raspberrypi #1"))
+                    if (String.Equals(service.Device.Name, filter_device_name))
                     {
                         _service = service;
 
